@@ -5,9 +5,8 @@ from .models import Categoria, Pelicula
 
 
 def inicio(request):
-     datos_H_A= Pelicula.objects.filter(titulo='Hombre Araña')
-     contexto={"Hombre_Araña":datos_H_A }
-     return render (request,'inicio.html',contexto)
+
+     return render (request,'inicio.html')
 
 
 

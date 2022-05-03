@@ -26,7 +26,7 @@ from AppCine_Blog.views import datos_Hombre_Araña
 from AppCine_Blog.views import inicio
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', inicio),
+    path('inicio/', inicio),
     path('Hombre_Araña/', datos_Hombre_Araña),
     path('C_accion/',categoria_accion ),
     path('C_comedia/',categoria_comedia ),

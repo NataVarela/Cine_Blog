@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% extends 'padre.html' %}
+
+    {% load static %}
+    
+    {% block bloqueQueCambia %}
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>lista de peliculas</title>
+</head>
+<body>
+    <h1>Lista de Peliculas</h1>
+    <ul>
+        
+        {% for pelicula in object_list  %}
+
+            <li>
+                <p>TITULO: {{pelicula.titulo}}</p>
+                <p>
+                    <a href="{% url 'detail' pelicula.id %}">Ver</a> 
+
+                    <a href="{% url 'edit' pelicula.id %}">Editar</a>
+                    <a href="{% url 'delete' pelicula.id %}">Borrar</a>
+
+                </p>
+
+
+            </li>
+        {% endfor %}
+        </ul>
+        <a href="{% url 'new' %}">Nuevo</a>
+            
+
+
+
+
+    </ul>
+
+
+
+</body>
+    {% endblock bloqueQueCambia %}
+
+</html>

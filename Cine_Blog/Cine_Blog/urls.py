@@ -28,6 +28,10 @@ from AppCine_Blog.views import Sobre_Nosotros
 from AppCine_Blog.views import login_views,registro_views
 from django.contrib.auth.views import LogoutView
 
+from AppCine_Blog.views import peliListView
+from AppCine_Blog.views import peliCreateView, peliDeleteView, peliDetailView, peliUpdateView
+from AppCine_Blog.views import editar_perfil
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -42,6 +46,12 @@ urlpatterns = [
     path('login/', login_views ,name= "login"),
     path('registro/', registro_views ,name= "registrar"),
     path('logout/', LogoutView.as_view(template_name='logout.html') ,name= "logout"),
+    path('peli/list/', peliListView.as_view() ,name= "lista"),
+    path('peli/edit/<pk>/', peliUpdateView.as_view() ,name= "edit"),
+    path('peli/delete/<pk>', peliDeleteView.as_view() ,name= "delete"),
+    path('peli/detail/<pk>', peliDetailView.as_view() ,name= "detail"),
+    path('peli/new/', peliCreateView.as_view() ,name= "new"),
+    path('editar_perfil/',editar_perfil ,name= "editar perfil"),
 
 ]   
 

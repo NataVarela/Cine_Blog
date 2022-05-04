@@ -1,14 +1,21 @@
+from crypt import methods
+from sre_constants import SUCCESS
 from django.template import loader
 from django.shortcuts import render
 from django.http import HttpResponse
-from .models import Categoria, Pelicula
+
+from AppCine_Blog.forms import editar_usuario_forms
+from .models import Avatar, Categoria, Pelicula
 from django.contrib.auth.forms import AuthenticationForm,UserCreationForm
 from django.contrib.auth import login, logout,authenticate
-
+from django.views.generic import ListView,UpdateView,DeleteView
+from django.views.generic.detail import DetailView
+from django.views.generic.edit  import CreateView
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 def inicio(request):
-
-     return render (request,'inicio.html')
+    avatar= Avatar.objects.get(user=request.user.id)
+    return render (request,'inicio.html',{'avatar':avatar})
 
 def Sobre_Nosotros(request):
 
@@ -87,3 +94,56 @@ def registro_views(request):
         form=UserCreationForm()
     
         return render(request, "registro.html", {'form':form})
+
+
+############## lista de peliculas #################
+class peliListView(LoginRequiredMixin,ListView):
+    model = Pelicula
+    template_name = "pelis_lista.html"
+
+
+class peliDetailView(LoginRequiredMixin,DetailView):
+    model = Pelicula
+    template_name = "pelicula_detalle.html"
+
+
+class peliCreateView(LoginRequiredMixin,CreateView):
+    model = Pelicula
+    template_name = "crear_pelis.html"
+    success_url= '/peli/list/' #######
+    fields= ['titulo','sinopsis','imagen','fecha_estreno','duracion','trailer_link','categoria']
+
+
+class peliUpdateView(LoginRequiredMixin,UpdateView):
+    model = Pelicula
+    template_name = "editar_pelis.html"
+    success_url= '/peli/list/' #######
+    fields= ['titulo','sinopsis','imagen','fecha_estreno','duracion','trailer_link','categoria']
+
+
+class peliDeleteView(LoginRequiredMixin,DeleteView):
+    model = Pelicula
+    success_url= '/peli/list/'
+    template_name = "peli_eliminar.html"
+
+############## editar perfil #################
+
+def editar_perfil(request):
+    usuario= request.user
+    if request.method == 'POST':
+        miformulario= editar_usuario_forms(request.POST)
+
+        if miformulario.is_valid():
+            data= miformulario.cleaned_data
+            usuario.email=data['email']
+            usuario.password1=data['password1']
+            usuario.password2=data['password2']
+            usuario.first_name=data['first name']
+            usuario.last_name=data['last name']
+            usuario.save()
+
+            return render(request,'inicio.html')
+    else:
+        miformulario= editar_usuario_forms(initial={'email':usuario.email})
+    
+    return render(request,'editar_perfil.html', {'miformulario': miformulario})

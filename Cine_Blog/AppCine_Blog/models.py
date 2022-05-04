@@ -1,5 +1,7 @@
 from distutils.command.upload import upload
+from tkinter import CASCADE
 from django.db import models
+from django.contrib.auth.models import User
 
 
 class Usuario(models.Model):
@@ -24,7 +26,7 @@ class Categoria(models.Model):
 class Pelicula(models.Model):
     titulo=models.CharField('titulo' , max_length=50)
     sinopsis=models.CharField('sinopsis' , max_length=600)
-    imagen=models.ImageField(upload_to='static/media/media', null=True , blank=True)
+    imagen=models.ImageField()
     fecha_estreno=models.DateField('fecha de estreno' )
     duracion= models.IntegerField('duracion')
     trailer_link= models.CharField('trailer', max_length=256)
@@ -35,3 +37,7 @@ class Pelicula(models.Model):
 
     class Meta:
         unique_together=['titulo']
+
+class Avatar(models.Model):
+    user=models.ForeignKey(User,on_delete=models.CASCADE)
+    imagen= models.ImageField(upload_to='avatares', null=True, blank=True)

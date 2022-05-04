@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% extends 'padre.html' %}
+
+    {% load static %}
+    
+    {% block bloqueQueCambia %}
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalles</title>
+</head>
+<body>
+    <p>Nombre de la pelicula: <i>{{pelicula.titulo}}</i></p>
+    <p>Fecha de estreno: <i>{{pelicula.fecha_estreno}}</i></p>
+    <p>Duracion : <i>{{pelicula.duracion}}</i></p>
+    <p>Categoria: <i>{{pelicula.categoria}}</i></p>
+    <p>   <a href="{% url 'lista'  %}">Regresar</a></p>
+</body>
+    {% endblock bloqueQueCambia %}
+
+</html>

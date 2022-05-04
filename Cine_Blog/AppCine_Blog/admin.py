@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Usuario
+from .models import Avatar, Usuario
 from .models import Categoria
 from .models import Pelicula
 # Register your models here.
@@ -11,3 +11,4 @@ from .models import Pelicula
 admin.site.register(Usuario)
 admin.site.register(Categoria)
 admin.site.register(Pelicula)
+admin.site.register(Avatar)

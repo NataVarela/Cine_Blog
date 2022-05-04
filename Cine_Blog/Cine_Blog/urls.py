@@ -24,15 +24,17 @@ from AppCine_Blog.views import categoria_aventura
 from AppCine_Blog.views import categoria_thriller
 from AppCine_Blog.views import datos_Hombre_Araña
 from AppCine_Blog.views import inicio
+from AppCine_Blog.views import Sobre_Nosotros
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('inicio/', inicio),
-    path('Hombre_Araña/', datos_Hombre_Araña),
-    path('C_accion/',categoria_accion ),
-    path('C_comedia/',categoria_comedia ),
-    path('C_terror/',categoria_terror ),
-    path('C_aventura/',categoria_aventura),
-    path('C_thriller/',categoria_thriller),
+    path('inicio/', inicio,name= "Inicio"),
+    path('sobre_nosotros/',Sobre_Nosotros, name= "Sobre Nosotros"),
+    path('Hombre_Araña/', datos_Hombre_Araña, name= "Hombre Araña"),
+    path('C_accion/',categoria_accion, name= "Accion" ),
+    path('C_comedia/',categoria_comedia,name= "Comedia" ),
+    path('C_terror/',categoria_terror, name= "Terror" ),
+    path('C_aventura/',categoria_aventura, name= "Aventura"),
+    path('C_thriller/',categoria_thriller, name= "Thriller") ,
 ]
 
 urlpatterns+= static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

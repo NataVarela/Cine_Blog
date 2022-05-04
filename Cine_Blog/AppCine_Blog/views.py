@@ -8,7 +8,9 @@ def inicio(request):
 
      return render (request,'inicio.html')
 
+def Sobre_Nosotros(request):
 
+     return render (request,'sobre_nosotros.html')
 
 ############## PELICULAS #################
 def datos_Hombre_Araña(request):

@@ -25,6 +25,10 @@ from AppCine_Blog.views import categoria_thriller
 from AppCine_Blog.views import datos_Hombre_Araña
 from AppCine_Blog.views import inicio
 from AppCine_Blog.views import Sobre_Nosotros
+from AppCine_Blog.views import login_views,registro_views
+from django.contrib.auth.views import LogoutView
+
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('inicio/', inicio,name= "Inicio"),
@@ -35,6 +39,10 @@ urlpatterns = [
     path('C_terror/',categoria_terror, name= "Terror" ),
     path('C_aventura/',categoria_aventura, name= "Aventura"),
     path('C_thriller/',categoria_thriller, name= "Thriller") ,
-]
+    path('login/', login_views ,name= "login"),
+    path('registro/', registro_views ,name= "registrar"),
+    path('logout/', LogoutView.as_view(template_name='logout.html') ,name= "logout"),
+
+]   
 
 urlpatterns+= static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

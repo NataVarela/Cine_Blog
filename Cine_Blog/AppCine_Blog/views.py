@@ -2,6 +2,8 @@ from django.template import loader
 from django.shortcuts import render
 from django.http import HttpResponse
 from .models import Categoria, Pelicula
+from django.contrib.auth.forms import AuthenticationForm,UserCreationForm
+from django.contrib.auth import login, logout,authenticate
 
 
 def inicio(request):
@@ -44,3 +46,44 @@ def categoria_thriller(request):
      datos_thriller= Pelicula.objects.filter(categoria='4')
      contexto={"datos_thriller":datos_thriller }
      return render(request, "C_thriller.html", contexto)
+
+############## LOGIN #################
+def login_views(request):
+    if request.method == 'POST':
+        form= AuthenticationForm(request, data=request.POST)
+
+        if form.is_valid():
+            datos=form.cleaned_data
+
+            usuario= datos['username']
+            psw= datos['password']
+            user= authenticate(username=usuario,password=psw)
+            
+            if user:
+                login(request,user)
+                return render(request,'inicio.html', {"mensaje": f'Bienvenido {usuario}'})
+            
+            else:
+                return render(request,'inicio.html', {"mensaje": f'Error : Datos incorrectos. Por favor vuelva a ingresar sus datos'})
+        
+        else:
+            return render(request,'inicio.html', {"mensaje": f'Error : Datos incorrectos'})
+    else:
+        form= AuthenticationForm()
+
+    return render(request,"login.html",{"form":form})
+
+############## REGISTRO #################
+def registro_views(request):
+    if request.method == 'POST':
+        form= UserCreationForm(request.POST)
+
+        if form.is_valid():
+            username=form.cleaned_data['username']
+            form.save()
+            return render(request,'inicio.html', {"mensaje": f'Usuario {username} creado'})
+    
+    else:
+        form=UserCreationForm()
+    
+        return render(request, "registro.html", {'form':form})

@@ -31,11 +31,13 @@ from django.contrib.auth.views import LogoutView
 from AppCine_Blog.views import peliListView
 from AppCine_Blog.views import peliCreateView, peliDeleteView, peliDetailView, peliUpdateView
 from AppCine_Blog.views import editar_perfil
+from AppCine_Blog.views import mi_perfil
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('inicio/', inicio,name= "Inicio"),
+    path('mi_perfil/', mi_perfil,name= "mi perfil"),
     path('sobre_nosotros/',Sobre_Nosotros, name= "Sobre Nosotros"),
     path('Hombre_Araña/', datos_Hombre_Araña, name= "Hombre Araña"),
     path('C_accion/',categoria_accion, name= "Accion" ),

@@ -5,13 +5,13 @@
 {% block bloqueQueCambia %}
         <!-- Page header with logo and tagline-->
         <header class="py-5 bg-light border-bottom mb-4">
-            <div class="container">
+            <div  class="container">
                 <div class="text-center my-5">
-                    <h1 class="fw-bolder">Welcome to Blog Home!</h1>
-                    <p class="lead mb-0">{A Bootstrap 5 starter layout for your next blog homepage}</p> <br> {{mensaje}}
-                    <img src="{{avatar.imagen.url}}" alt="avatar">
+                    <h1 class="fw-bolder">Todas tus peliculas en un solo lugar!</h1>
+                    <p class="lead mb-0"></p> <br> {{mensaje}}
                 </div>
             </div>
+            
         <!-- Page content-->
         <div class="container">
             <div class="row">
@@ -37,7 +37,7 @@
                                     <div class="small text-muted">January 1, 2022</div>
                                     <h2 class="card-title h4">Post Title</h2>
                                     <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid atque, nulla.</p>
-                                    <a class="btn btn-primary" href="#!">Read more →</a>
+                                    <a class="btn btn-primary" href="avatar.jpeg">Read more →</a>
                                 </div>
                             </div>
                             <!-- Blog post-->
@@ -56,20 +56,21 @@
                             <div class="card mb-4">
                                 <a href="#!"><img class="card-img-top" src="https://dummyimage.com/700x350/dee2e6/6c757d.jpg" alt="..." /></a>
                                 <div class="card-body">
-                                    <div class="small text-muted">January 1, 2022</div>
-                                    <h2 class="card-title h4">Post Title</h2>
-                                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid atque, nulla.</p>
-                                    <a class="btn btn-primary" href="#!">Read more →</a>
+                                    <div class="small text-muted">fecha de estreno: 12/05/2002</div>
+                                    <h2 class="card-title h4">La hera de hielo 1</h2>
+                                    <p class="card-text">Hace 20.000 años, la Tierra es un lugar prehistórico lleno de peligros, entre ellos el comienzo de la Edad de hielo. .</p>
+                                    <a class="btn btn-primary" href="{% url 'hera de hielo' %}">Read more →</a>
                                 </div>
                             </div>
+                            
                             <!-- Blog post-->
                             <div class="card mb-4">
                                 <a href="#!"><img class="card-img-top" src="https://dummyimage.com/700x350/dee2e6/6c757d.jpg" alt="..." /></a>
                                 <div class="card-body">
-                                    <div class="small text-muted">January 1, 2022</div>
-                                    <h2 class="card-title h4">Post Title</h2>
-                                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid atque, nulla? Quos cum ex quis soluta, a laboriosam.</p>
-                                    <a class="btn btn-primary" href="#!">Read more →</a>
+                                    <div class="small text-muted">fecha de estreno: 20/10/2001</div>
+                                    <h2 class="card-title h4"> El hombre araña </h2>
+                                    <p class="card-text">Luego de sufrir la picadura de una araña genéticamente modificada, un estudiante de secundaria tímido y torpe adquiere increíbles capacidades como arácnido..</p>
+                                    <a class="btn btn-primary" href="{% url 'Hombre Araña' %}">Read more →</a>                                    </ul>
                                 </div>
                             </div>
                         </div>
@@ -80,11 +81,7 @@
                         <ul class="pagination justify-content-center my-4">
                             <li class="page-item disabled"><a class="page-link" href="#" tabindex="-1" aria-disabled="true">Newer</a></li>
                             <li class="page-item active" aria-current="page"><a class="page-link" href="#!">1</a></li>
-                            <li class="page-item"><a class="page-link" href="#!">2</a></li>
-                            <li class="page-item"><a class="page-link" href="#!">3</a></li>
-                            <li class="page-item disabled"><a class="page-link" href="#!">...</a></li>
-                            <li class="page-item"><a class="page-link" href="#!">15</a></li>
-                            <li class="page-item"><a class="page-link" href="#!">Older</a></li>
+
                         </ul>
                     </nav>
                 </div>

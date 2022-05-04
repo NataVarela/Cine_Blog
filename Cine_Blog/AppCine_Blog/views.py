@@ -14,12 +14,18 @@ from django.views.generic.edit  import CreateView
 from django.contrib.auth.mixins import LoginRequiredMixin
 
 def inicio(request):
+    
+    return render (request,'inicio.html')
+
+def mi_perfil(request):
     avatar= Avatar.objects.get(user=request.user.id)
-    return render (request,'inicio.html',{'avatar':avatar})
+    return render (request,'mi_perfil.html',{'avatar':avatar})
+    
 
 def Sobre_Nosotros(request):
 
      return render (request,'sobre_nosotros.html')
+
 
 ############## PELICULAS #################
 def datos_Hombre_Araña(request):
@@ -28,6 +34,11 @@ def datos_Hombre_Araña(request):
      
      return render(request, "Hombre_Araña.html", contexto) 
      
+def datos_hera_hielo(request):
+     datos_H_A= Pelicula.objects.filter(titulo='Hera de hielo')
+     contexto={"hera_hielo":datos_H_A }
+     
+     return render(request, "Hera_hielo.html", contexto) 
 ############## CATEGORIAS #################
 def categoria_accion(request):
      datos_accion= Pelicula.objects.filter(categoria='1')
@@ -37,7 +48,7 @@ def categoria_accion(request):
 def categoria_comedia(request):
      datos_comedia= Pelicula.objects.filter(categoria='3')
      contexto={"datos_comedia":datos_comedia }
-     return render(request, "C_comedia.html", contexto)
+     return render(request, "C_comedia.html", contexto,)
 
 def categoria_terror(request):
      datos_terror= Pelicula.objects.filter(categoria='5')

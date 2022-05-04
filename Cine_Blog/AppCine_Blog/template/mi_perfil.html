@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi perfil</title>
+</head>
+<body>
+    <p>este es el perfil </p>
+    <div class="text-center my-5">
+        <p align="center"> <img src="{{avatar.imagen.url}}" alt="avatar"  width="90" height="70" ><p  align="right"><a href="mi_perfil" > {{user.get_username}}</a></p></p>
+        <h1 class="fw-bolder">Todas tus peliculas en un solo lugar!</h1>
+        <p class="lead mb-0"></p> <br> {{mensaje}}
+    </div>
+</body>
+</html>
